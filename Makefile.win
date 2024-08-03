@@ -1,0 +1,40 @@
+# Project: setUp
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o Scenes/GameScene.o Utils/Rectangle.o Utils/stb_image.o Utils/Utility_Class.o
+LINKOBJ  = main.o Scenes/GameScene.o Utils/Rectangle.o Utils/stb_image.o Utils/Utility_Class.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -L"D:/DevCpp/SetUpProject/Dependencies/GLEW/lib/Release/x64" -L"D:/DevCpp/SetUpProject/Dependencies/GLFW/lib-vc2019"  -lglew32 -lglfw3 -lGdi32 -lopengl32
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/DevCpp/SetUpProject/Dependencies/GLEW/include" -I"D:/DevCpp/SetUpProject/Dependencies/GLFW/include" -I"D:/DevCpp/SetUpProject/Assets" -I"D:/DevCpp/SetUpProject/Scenes" -I"D:/DevCpp/SetUpProject/Shaders" -I"D:/DevCpp/SetUpProject/Utils" -I"D:/DevCpp/SetUpProject/Dependencies/glm/glm"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"D:/DevCpp/SetUpProject/Dependencies/GLEW/include" -I"D:/DevCpp/SetUpProject/Dependencies/GLFW/include" -I"D:/DevCpp/SetUpProject/Assets" -I"D:/DevCpp/SetUpProject/Scenes" -I"D:/DevCpp/SetUpProject/Shaders" -I"D:/DevCpp/SetUpProject/Utils" -I"D:/DevCpp/SetUpProject/Dependencies/glm/glm"
+BIN      = setUp.exe
+CXXFLAGS = $(CXXINCS) -DGLEW_BUILD -std=c++11
+CFLAGS   = $(INCS) -DGLEW_BUILD
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Scenes/GameScene.o: Scenes/GameScene.cpp
+	$(CPP) -c Scenes/GameScene.cpp -o Scenes/GameScene.o $(CXXFLAGS)
+
+Utils/Rectangle.o: Utils/Rectangle.cpp
+	$(CPP) -c Utils/Rectangle.cpp -o Utils/Rectangle.o $(CXXFLAGS)
+
+Utils/stb_image.o: Utils/stb_image.cpp
+	$(CPP) -c Utils/stb_image.cpp -o Utils/stb_image.o $(CXXFLAGS)
+
+Utils/Utility_Class.o: Utils/Utility_Class.cpp
+	$(CPP) -c Utils/Utility_Class.cpp -o Utils/Utility_Class.o $(CXXFLAGS)
